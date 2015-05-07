@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activitmain_bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_bg_gray"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/chat_title_bg_repeat" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/i_want"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/main_my_order_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="5dip"
+            android:text="@string/my_order"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/main_search_rl"
+        layout="@layout/common_search" />
+
+    <!-- <ImageView -->
+    <!-- android:id="@+id/main_search_iv" -->
+    <!-- android:layout_width="match_parent" -->
+    <!-- android:layout_height="50dp" -->
+    <!-- android:layout_centerHorizontal="true" -->
+    <!-- android:background="@drawable/c" /> -->
+
+    <TextView
+        android:id="@+id/search_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dip"
+        android:paddingBottom="5dip"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dip"
+        android:text="@string/search_history"
+        android:textColor="@color/text_title_gray"
+        android:textSize="@dimen/middle_text_size" />
+
+    <ListView
+        android:id="@+id/main_search_history_lv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:cacheColorHint="#00000000"
+        android:dividerHeight="0.5dip"
+        android:fastScrollEnabled="false"
+        android:focusable="true"
+        android:scrollbars="none" />
+
+</LinearLayout>
