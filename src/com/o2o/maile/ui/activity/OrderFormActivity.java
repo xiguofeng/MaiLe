@@ -170,10 +170,15 @@ public class OrderFormActivity extends BaseActivity implements OnClickListener {
 			order.setLatitude(mLatitude);
 			order.setLongitude(mLongitude);
 
-			if (mGoods.getStandard().equals("true")) {
-				OrderLogic.createOrder(mContext, mHandler, order);
-			} else {
+			if (!mGoods.getStandard().equals("true")) {
+				order.setCategoryIDLevel1(mGoods.getCategoryIDLevel1());
+				order.setCategoryIDLevel2(mGoods.getCategoryIDLevel2());
+				order.setCategoryNameLevel1(mGoods.getCategoryNameLevel1());
+				order.setCategoryNameLevel2(mGoods.getCategoryNameLevel2());
 				OrderLogic.createOrder2(mContext, mHandler, order);
+			} else {
+				OrderLogic.createOrder(mContext, mHandler, order);
+
 			}
 
 		} else {
@@ -197,12 +202,12 @@ public class OrderFormActivity extends BaseActivity implements OnClickListener {
 						String address = location.getAddrStr()
 								+ mContext.getString(R.string.nearby);
 						mOrderAddressEt.setText(address);
-						if (true) {
-
-							// mLocData = location;
-							// mLocData.latitude = location.getLatitude();
-							// mLocData.longitude = location.getLongitude();
-						}
+						// if (true) {
+						//
+						// // mLocData = location;
+						// // mLocData.latitude = location.getLatitude();
+						// // mLocData.longitude = location.getLongitude();
+						// }
 					}
 				});
 	}

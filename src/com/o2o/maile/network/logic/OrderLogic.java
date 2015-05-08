@@ -116,19 +116,18 @@ public class OrderLogic {
 	public static void createOrder2(final Context context,
 			final Handler handler, final OrderClient order) {
 
-		String url = RequestUrl.HOST_URL + RequestUrl.order.buyCreateOrder;
+		String url = RequestUrl.HOST_URL + RequestUrl.order.buyCreateOrder2;
 		JSONObject requestJson = new JSONObject();
 		try {
-			requestJson.put("categoryIDLevel2", URLEncoder.encode(
-					AppInfoManager.getClinetID(context), "UTF-8"));
-			requestJson.put("categoryIDLevel1", URLEncoder.encode(
-					AppInfoManager.getClinetID(context), "UTF-8"));
-			requestJson.put("categoryNameLevel1", URLEncoder.encode(
-					AppInfoManager.getClinetID(context), "UTF-8"));
-			requestJson.put("categoryNameLevel2", URLEncoder.encode(
-					AppInfoManager.getClinetID(context), "UTF-8"));
-			requestJson.put("goodsPrice", URLEncoder.encode(
-					AppInfoManager.getClinetID(context), "UTF-8"));
+			requestJson.put("categoryIDLevel2",
+					URLEncoder.encode(order.getCategoryIDLevel2(), "UTF-8"));
+			requestJson.put("categoryIDLevel1",
+					URLEncoder.encode(order.getCategoryIDLevel1(), "UTF-8"));
+			requestJson.put("categoryNameLevel1",
+					URLEncoder.encode(order.getCategoryNameLevel1(), "UTF-8"));
+			requestJson.put("categoryNameLevel2",
+					URLEncoder.encode(order.getCategoryNameLevel2(), "UTF-8"));
+			requestJson.put("goodsPrice", order.getBuyPrice());
 
 			requestJson.put("clientID", URLEncoder.encode(
 					AppInfoManager.getClinetID(context), "UTF-8"));
@@ -150,13 +149,14 @@ public class OrderLogic {
 			requestJson.put("longitude",
 					Double.parseDouble(order.getLongitude()));
 
+			Log.e("xxx_createOrder2_json", requestJson.toString());
 			BaseApplication.getInstanceRequestQueue().add(
 					new JsonObjectRequest(Method.POST, url, requestJson,
 							new Listener<JSONObject>() {
 								@Override
 								public void onResponse(JSONObject response) {
 									if (null != response) {
-										Log.e("xxx_createOrder",
+										Log.e("xxx_createOrder2",
 												response.toString());
 										parseCreateOrder2Data(response, handler);
 									}

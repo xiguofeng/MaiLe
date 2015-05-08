@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_bg_gray"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/search_top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/search_bg_gray"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <com.o2o.maile.ui.view.AutoClearEditText
+            android:id="@+id/search_et"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dip"
+            android:layout_marginLeft="10dip"
+            android:layout_marginTop="5dip"
+            android:layout_weight="1"
+            android:background="@drawable/search_input"
+            android:focusable="true"
+            android:hint="@string/search_hint"
+            android:padding="10dip"
+            android:singleLine="true"
+            android:textColor="@color/gray_divide_line"
+            android:textSize="@dimen/small_text_size" />
+
+        <TextView
+            android:id="@+id/search_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dip"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="5dip"
+            android:text="@string/search"
+            android:textColor="@color/blue_light"
+            android:textSize="@dimen/medium_text_size" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/search_tag_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dip"
+        android:paddingBottom="5dip"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dip"
+        android:text="@string/search_history"
+        android:textColor="@color/text_title_gray"
+        android:textSize="@dimen/middle_text_size" />
+
+    <ListView
+        android:id="@+id/sellers_lv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:visibility="gone">
+    </ListView>
+
+    <ListView
+        android:id="@+id/search_history_lv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:cacheColorHint="#00000000"
+        android:dividerHeight="0.5dip"
+        android:fastScrollEnabled="false"
+        android:focusable="true"
+        android:scrollbars="none" />
+
+</LinearLayout><!-- From: file:/D:/workspace/MaiLe/res/layout/search.xml -->

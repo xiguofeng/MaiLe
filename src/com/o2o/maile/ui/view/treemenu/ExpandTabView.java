@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.drawable.BitmapDrawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.PopupWindow.OnDismissListener;
@@ -52,14 +54,16 @@ public class ExpandTabView extends LinearLayout implements OnDismissListener {
 		}
 	}
 
-	public void setTitle(String title){
-		
+	public void setTitle(String title) {
+
 	}
+
 	/**
 	 * 根据选择的位置获取tabitem显示的值
 	 */
 	public String getTitle(int position) {
-		if (position < mToggleButton.size() && mToggleButton.get(position).getText() != null) {
+		if (position < mToggleButton.size()
+				&& mToggleButton.get(position).getText() != null) {
 			return mToggleButton.get(position).getText().toString();
 		}
 		return "";
@@ -72,24 +76,28 @@ public class ExpandTabView extends LinearLayout implements OnDismissListener {
 		if (mContext == null) {
 			return;
 		}
-		LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		LayoutInflater inflater = (LayoutInflater) mContext
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
 		mTextArray = textArray;
 		for (int i = 0; i < viewArray.size(); i++) {
 			final RelativeLayout r = new RelativeLayout(mContext);
-			int maxHeight = (int) (displayHeight * 0.7);
-			RelativeLayout.LayoutParams rl = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.FILL_PARENT, maxHeight);
+			int maxHeight = (int) (displayHeight);
+			RelativeLayout.LayoutParams rl = new RelativeLayout.LayoutParams(
+					RelativeLayout.LayoutParams.FILL_PARENT, maxHeight);
 			rl.leftMargin = 10;
 			rl.rightMargin = 10;
 			r.addView(viewArray.get(i), rl);
 			mViewArray.add(r);
 			r.setTag(SMALL);
-			ToggleButton tButton = (ToggleButton) inflater.inflate(R.layout.toggle_button, this, false);
+			ToggleButton tButton = (ToggleButton) inflater.inflate(
+					R.layout.toggle_button, this, false);
 			addView(tButton);
 			View line = new TextView(mContext);
 			line.setBackgroundResource(R.drawable.choosebar_line);
 			if (i < viewArray.size() - 1) {
-				LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(2, LinearLayout.LayoutParams.FILL_PARENT);
+				LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(2,
+						LinearLayout.LayoutParams.FILL_PARENT);
 				addView(line, lp);
 			}
 			mToggleButton.add(tButton);
@@ -103,7 +111,8 @@ public class ExpandTabView extends LinearLayout implements OnDismissListener {
 				}
 			});
 
-			r.setBackgroundColor(mContext.getResources().getColor(R.color.popup_main_background));
+			r.setBackgroundColor(mContext.getResources().getColor(
+					R.color.popup_main_background));
 			tButton.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View view) {
@@ -127,10 +136,15 @@ public class ExpandTabView extends LinearLayout implements OnDismissListener {
 	private void startAnimation() {
 
 		if (popupWindow == null) {
-			popupWindow = new PopupWindow(mViewArray.get(selectPosition), displayWidth, displayHeight);
+			popupWindow = new PopupWindow(mViewArray.get(selectPosition),
+					LayoutParams.MATCH_PARENT, displayHeight);
 			popupWindow.setAnimationStyle(R.style.PopupWindowAnimation);
 			popupWindow.setFocusable(false);
 			popupWindow.setOutsideTouchable(true);
+			popupWindow.setBackgroundDrawable(new BitmapDrawable());
+			backgroundAlpha(1f);
+			popupWindow.setOnDismissListener(new poponDismissListener());
+
 		}
 
 		if (selectedButton.isChecked()) {
@@ -159,6 +173,7 @@ public class ExpandTabView extends LinearLayout implements OnDismissListener {
 			popupWindow.setContentView(mViewArray.get(position));
 		}
 		popupWindow.showAsDropDown(this, 0, 0);
+
 	}
 
 	/**
@@ -188,15 +203,17 @@ public class ExpandTabView extends LinearLayout implements OnDismissListener {
 
 	private void init(Context context) {
 		mContext = context;
-		displayWidth = ((Activity) mContext).getWindowManager().getDefaultDisplay().getWidth();
-		displayHeight = ((Activity) mContext).getWindowManager().getDefaultDisplay().getHeight();
+		displayWidth = ((Activity) mContext).getWindowManager()
+				.getDefaultDisplay().getWidth();
+		displayHeight = ((Activity) mContext).getWindowManager()
+				.getDefaultDisplay().getHeight();
 		setOrientation(LinearLayout.HORIZONTAL);
 	}
 
 	@Override
 	public void onDismiss() {
 		showPopup(selectPosition);
-		popupWindow.setOnDismissListener(null);
+		popupWindow.setOnDismissListener(new poponDismissListener());
 	}
 
 	private OnButtonClickListener mOnButtonClickListener;
@@ -213,6 +230,26 @@ public class ExpandTabView extends LinearLayout implements OnDismissListener {
 	 */
 	public interface OnButtonClickListener {
 		public void onClick(int selectPosition);
+	}
+
+	/**
+	 * 添加新笔记时弹出的popWin关闭的事件，主要是为了将背景透明度改回来
+	 *
+	 */
+	class poponDismissListener implements PopupWindow.OnDismissListener {
+
+		@Override
+		public void onDismiss() {
+			backgroundAlpha(1f);
+		}
+
+	}
+
+	public void backgroundAlpha(float bgAlpha) {
+		WindowManager.LayoutParams lp = ((Activity) (mContext)).getWindow()
+				.getAttributes();
+		lp.alpha = bgAlpha; // 0.0-1.0
+		((Activity) (mContext)).getWindow().setAttributes(lp);
 	}
 
 }

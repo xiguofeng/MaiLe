@@ -71,9 +71,10 @@ public class SearchActivity extends BaseActivity implements OnClickListener {
 					mSellersLv.setVisibility(View.VISIBLE);
 					mSearchTagTv.setText(getString(R.string.find_goods));
 				} else {
-					
+
 					Intent intent = new Intent(SearchActivity.this,
 							SpecialGoodsActivity.class);
+					intent.putExtra("goodsName", mSearchKey);
 					startActivity(intent);
 					overridePendingTransition(R.anim.push_left_in,
 							R.anim.push_left_out);
@@ -143,8 +144,9 @@ public class SearchActivity extends BaseActivity implements OnClickListener {
 					int position, long arg3) {
 				Intent intent = new Intent(mContext, OrderFormActivity.class);
 				Bundle bundle = new Bundle();
-				bundle.putSerializable(OrderFormActivity.GOODS_KEY,
-						mGoodsList.get(position));
+				Goods goods = mGoodsList.get(position);
+				goods.setStandard("true");
+				bundle.putSerializable(OrderFormActivity.GOODS_KEY, goods);
 				intent.putExtras(bundle);
 				startActivity(intent);
 				overridePendingTransition(R.anim.push_left_in,

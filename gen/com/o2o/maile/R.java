@@ -407,13 +407,13 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     }
     public static final class id {
         public static final int activitmain_bg=0x7f090026;
-        public static final int app_name=0x7f09006c;
+        public static final int app_name=0x7f09006f;
         public static final int back_ll=0x7f090051;
         public static final int btn_noreg_return_login=0x7f090052;
         public static final int btn_regform_regnewuser=0x7f090050;
         public static final int checkBox_remberpsw=0x7f090024;
-        public static final int copy_right=0x7f09006b;
-        public static final int expandtab_view=0x7f09006a;
+        public static final int copy_right=0x7f09006e;
+        public static final int expandtab_view=0x7f09006d;
         public static final int history_order_lv=0x7f090005;
         public static final int input=0x7f09001e;
         public static final int item_brief_tv=0x7f090003;
@@ -479,7 +479,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int orderlist_vPager=0x7f090042;
         public static final int phone_et=0x7f09004d;
         public static final int phone_tv=0x7f09004e;
-        public static final int refresh_list_footer_progressbar=0x7f09006d;
+        public static final int refresh_list_footer_progressbar=0x7f090070;
         public static final int regInputView=0x7f090046;
         public static final int reg_status_layout=0x7f090006;
         public static final int reg_status_message=0x7f090007;
@@ -515,8 +515,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int search_top_layout=0x7f090065;
         public static final int search_tv=0x7f090004;
         public static final int sellers_lv=0x7f090068;
+        public static final int sg_title_ll=0x7f09006a;
+        public static final int sg_title_tag_tv=0x7f09006b;
+        public static final int sg_title_tv=0x7f09006c;
         public static final int textView2=0x7f090021;
-        public static final int unfinished_lv=0x7f09006e;
+        public static final int unfinished_lv=0x7f090071;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -568,7 +571,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         /**  退出程序时的提示信息 
          */
         public static final int exit_program_tip=0x7f070011;
-        public static final int find_goods=0x7f07004d;
+        public static final int find_goods=0x7f07004e;
         public static final int get_fail=0x7f07003e;
         public static final int get_suc=0x7f07003d;
         public static final int history_order=0x7f07002f;
@@ -590,13 +593,14 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int mobile_no_tag=0x7f07003a;
         public static final int my_order=0x7f070030;
         public static final int nearby=0x7f070042;
-        public static final int no_data=0x7f070050;
+        public static final int no_data=0x7f070051;
         public static final int no_find=0x7f070045;
         public static final int no_goods_brief=0x7f070046;
         public static final int no_order=0x7f07004c;
         /**  notify 
          */
-        public static final int notify=0x7f07004e;
+        public static final int notify=0x7f07004f;
+        public static final int now_select=0x7f07004d;
         public static final int num_hint=0x7f070040;
         public static final int number=0x7f070037;
         public static final int order_agreed=0x7f07004a;
@@ -606,7 +610,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int order_not_agreed=0x7f07004b;
         public static final int order_num_digits=0x7f07002b;
         public static final int order_result=0x7f070031;
-        public static final int order_suc=0x7f07004f;
+        public static final int order_suc=0x7f070050;
         public static final int order_wait=0x7f070043;
         public static final int order_wait_receiving=0x7f070049;
         public static final int order_write=0x7f07002a;

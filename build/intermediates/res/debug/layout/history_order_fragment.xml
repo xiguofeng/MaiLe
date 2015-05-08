@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_bg_gray" 
+    android:orientation="vertical" >
+
+    <ListView
+        android:id="@+id/history_order_lv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:cacheColorHint="#00000000"
+        android:dividerHeight="0.5dip"
+        android:fastScrollEnabled="false"
+        android:focusable="true"
+        android:scrollbars="none" />
+
+</LinearLayout><!-- From: file:/D:/workspace/MaiLe/res/layout/history_order_fragment.xml -->

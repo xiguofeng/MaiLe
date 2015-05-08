@@ -1,0 +1,227 @@
+-- Merging decision tree log ---
+manifest
+ADDED from AndroidManifest.xml:2:1
+	package
+		ADDED from AndroidManifest.xml:3:5
+	android:versionName
+		ADDED from AndroidManifest.xml:5:5
+	android:versionCode
+		ADDED from AndroidManifest.xml:4:5
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	xmlns:android
+		ADDED from AndroidManifest.xml:2:11
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from AndroidManifest.xml:7:5
+	android:name
+		ADDED from AndroidManifest.xml:7:22
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from AndroidManifest.xml:9:5
+	android:name
+		ADDED from AndroidManifest.xml:9:22
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from AndroidManifest.xml:11:5
+	android:name
+		ADDED from AndroidManifest.xml:11:22
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from AndroidManifest.xml:13:5
+	android:name
+		ADDED from AndroidManifest.xml:13:22
+uses-permission#android.permission.CHANGE_WIFI_STATE
+ADDED from AndroidManifest.xml:15:5
+	android:name
+		ADDED from AndroidManifest.xml:15:22
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from AndroidManifest.xml:17:5
+	android:name
+		ADDED from AndroidManifest.xml:17:22
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from AndroidManifest.xml:19:5
+	android:name
+		ADDED from AndroidManifest.xml:19:22
+uses-permission#android.permission.INTERNET
+ADDED from AndroidManifest.xml:21:5
+	android:name
+		ADDED from AndroidManifest.xml:21:22
+uses-permission#android.permission.MOUNT_UNMOUNT_FILESYSTEMS
+ADDED from AndroidManifest.xml:22:5
+	android:name
+		ADDED from AndroidManifest.xml:22:22
+uses-permission#android.permission.VIBRATE
+ADDED from AndroidManifest.xml:24:5
+	android:name
+		ADDED from AndroidManifest.xml:24:22
+uses-permission#android.permission.WAKE_LOCK
+ADDED from AndroidManifest.xml:25:5
+	android:name
+		ADDED from AndroidManifest.xml:25:22
+uses-permission#android.permission.WRITE_SETTINGS
+ADDED from AndroidManifest.xml:26:5
+	android:name
+		ADDED from AndroidManifest.xml:26:22
+uses-sdk
+ADDED from AndroidManifest.xml:28:5
+	android:targetSdkVersion
+		ADDED from AndroidManifest.xml:30:9
+	android:minSdkVersion
+		ADDED from AndroidManifest.xml:29:9
+application
+ADDED from AndroidManifest.xml:32:5
+	android:label
+		ADDED from AndroidManifest.xml:36:9
+	android:allowBackup
+		ADDED from AndroidManifest.xml:34:9
+	android:icon
+		ADDED from AndroidManifest.xml:35:9
+	android:theme
+		ADDED from AndroidManifest.xml:37:9
+	android:name
+		ADDED from AndroidManifest.xml:33:9
+meta-data#com.baidu.lbsapi.API_KEY
+ADDED from AndroidManifest.xml:49:9
+	android:value
+		ADDED from AndroidManifest.xml:51:13
+	android:name
+		ADDED from AndroidManifest.xml:50:13
+activity#com.o2o.maile.ui.activity.SplashActivity
+ADDED from AndroidManifest.xml:53:9
+	android:label
+		ADDED from AndroidManifest.xml:55:13
+	android:name
+		ADDED from AndroidManifest.xml:54:13
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from AndroidManifest.xml:56:13
+action#android.intent.action.MAIN
+ADDED from AndroidManifest.xml:57:17
+	android:name
+		ADDED from AndroidManifest.xml:57:25
+category#android.intent.category.LAUNCHER
+ADDED from AndroidManifest.xml:59:17
+	android:name
+		ADDED from AndroidManifest.xml:59:27
+activity#com.o2o.maile.ui.activity.MainActivity
+ADDED from AndroidManifest.xml:62:9
+	android:label
+		ADDED from AndroidManifest.xml:64:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:65:13
+	android:name
+		ADDED from AndroidManifest.xml:63:13
+activity#com.o2o.maile.ui.activity.LoginActivity
+ADDED from AndroidManifest.xml:67:9
+	android:label
+		ADDED from AndroidManifest.xml:69:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:70:13
+	android:windowSoftInputMode
+		ADDED from AndroidManifest.xml:71:13
+	android:name
+		ADDED from AndroidManifest.xml:68:13
+activity#com.o2o.maile.ui.activity.RegActivity
+ADDED from AndroidManifest.xml:73:9
+	android:label
+		ADDED from AndroidManifest.xml:75:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:76:13
+	android:windowSoftInputMode
+		ADDED from AndroidManifest.xml:77:13
+	android:name
+		ADDED from AndroidManifest.xml:74:13
+activity#com.o2o.maile.ui.activity.SearchActivity
+ADDED from AndroidManifest.xml:79:9
+	android:label
+		ADDED from AndroidManifest.xml:81:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:82:13
+	android:windowSoftInputMode
+		ADDED from AndroidManifest.xml:83:13
+	android:name
+		ADDED from AndroidManifest.xml:80:13
+activity#com.o2o.maile.ui.activity.OrderFormActivity
+ADDED from AndroidManifest.xml:85:9
+	android:label
+		ADDED from AndroidManifest.xml:87:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:88:13
+	android:windowSoftInputMode
+		ADDED from AndroidManifest.xml:89:13
+	android:name
+		ADDED from AndroidManifest.xml:86:13
+activity#com.o2o.maile.ui.activity.ResultActivity
+ADDED from AndroidManifest.xml:91:9
+	android:label
+		ADDED from AndroidManifest.xml:93:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:94:13
+	android:windowSoftInputMode
+		ADDED from AndroidManifest.xml:95:13
+	android:name
+		ADDED from AndroidManifest.xml:92:13
+activity#com.o2o.maile.ui.activity.HistoryOrderActivity
+ADDED from AndroidManifest.xml:97:9
+	android:label
+		ADDED from AndroidManifest.xml:99:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:100:13
+	android:windowSoftInputMode
+		ADDED from AndroidManifest.xml:101:13
+	android:name
+		ADDED from AndroidManifest.xml:98:13
+activity#com.o2o.maile.ui.activity.HistoryOrderFormActivity
+ADDED from AndroidManifest.xml:103:9
+	android:label
+		ADDED from AndroidManifest.xml:105:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:106:13
+	android:windowSoftInputMode
+		ADDED from AndroidManifest.xml:107:13
+	android:name
+		ADDED from AndroidManifest.xml:104:13
+activity#com.o2o.maile.ui.activity.OrderListActivity
+ADDED from AndroidManifest.xml:109:9
+	android:launchMode
+		ADDED from AndroidManifest.xml:112:13
+	android:configChanges
+		ADDED from AndroidManifest.xml:111:13
+	android:theme
+		ADDED from AndroidManifest.xml:113:13
+	android:name
+		ADDED from AndroidManifest.xml:110:13
+activity#com.o2o.maile.ui.activity.OrderDetailActivity
+ADDED from AndroidManifest.xml:115:9
+	android:label
+		ADDED from AndroidManifest.xml:118:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:119:13
+	android:configChanges
+		ADDED from AndroidManifest.xml:117:13
+	android:name
+		ADDED from AndroidManifest.xml:116:13
+activity#com.o2o.maile.ui.activity.OrderWaitActivity
+ADDED from AndroidManifest.xml:121:9
+	android:label
+		ADDED from AndroidManifest.xml:124:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:125:13
+	android:configChanges
+		ADDED from AndroidManifest.xml:123:13
+	android:name
+		ADDED from AndroidManifest.xml:122:13
+activity#com.o2o.maile.ui.activity.SpecialGoodsActivity
+ADDED from AndroidManifest.xml:127:9
+	android:label
+		ADDED from AndroidManifest.xml:130:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:131:13
+	android:configChanges
+		ADDED from AndroidManifest.xml:129:13
+	android:name
+		ADDED from AndroidManifest.xml:128:13
+service#com.o2o.maile.service.NotifyService
+ADDED from AndroidManifest.xml:134:9
+	android:name
+		ADDED from AndroidManifest.xml:134:18
+service#com.o2o.maile.service.PushService
+ADDED from AndroidManifest.xml:136:9
+	android:name
+		ADDED from AndroidManifest.xml:136:18

@@ -94,10 +94,9 @@
     <string name="order_wait_receiving">待收货</string>
     <string name="order_agreed">已成交</string>
     <string name="order_not_agreed">未成交</string>
-     <string name="no_order">无订单数据</string>
-
-    
-   <string name="find_goods">为您找到以下商品</string>
+    <string name="no_order">无订单数据</string>
+    <string name="now_select">您要的商品：</string>
+    <string name="find_goods">为您找到以下商品</string>
     <!-- notify -->
     <string name="notify">消息</string>
     <string name="order_suc">订单成功</string>

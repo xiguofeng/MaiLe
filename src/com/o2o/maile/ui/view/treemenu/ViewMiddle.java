@@ -5,6 +5,7 @@ import java.util.LinkedList;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,10 +21,12 @@ public class ViewMiddle extends LinearLayout implements ViewBaseAction {
 	private ListView regionListView;
 	private ListView plateListView;
 	private ArrayList<Category> groups = new ArrayList<Category>();
-	private LinkedList<Category> childrenItem = new LinkedList<Category>();
+	// private LinkedList<Category> childrenItem = new LinkedList<Category>();
+	private ArrayList<Category> childrenItem = new ArrayList<Category>();
 	private SparseArray<LinkedList<Category>> children = new SparseArray<LinkedList<Category>>();
-	private CategoryAdapter plateListViewAdapter;
 	private CategoryAdapter earaListViewAdapter;
+	private CategoryAdapter plateListViewAdapter;
+	private OnSelectOneListener mOnSelectOneListener;
 	private OnSelectListener mOnSelectListener;
 	private int tEaraPosition = 0;
 	private int tBlockPosition = 0;
@@ -95,15 +98,18 @@ public class ViewMiddle extends LinearLayout implements ViewBaseAction {
 
 					@Override
 					public void onItemClick(View view, int position) {
-						if (position < children.size()) {
-							childrenItem.clear();
-							childrenItem.addAll(children.get(position));
-							plateListViewAdapter.notifyDataSetChanged();
-						}
+						groups.clear();
+						childrenItem.clear();
+						mOnSelectOneListener.getValue(position);
+						// if (position < children.size()) {
+						// childrenItem.clear();
+						// childrenItem.addAll(children.get(position));
+						// plateListViewAdapter.notifyDataSetChanged();
+						// }
 					}
 				});
-		if (tEaraPosition < children.size())
-			childrenItem.addAll(children.get(tEaraPosition));
+		// if (tEaraPosition < children.size())
+		// childrenItem.addAll(children.get(tEaraPosition));
 		plateListViewAdapter = new CategoryAdapter(context, childrenItem,
 				R.drawable.choose_item_right,
 				R.drawable.choose_plate_item_selector);
@@ -119,8 +125,7 @@ public class ViewMiddle extends LinearLayout implements ViewBaseAction {
 						showString = childrenItem.get(position)
 								.getCategoryName();
 						if (mOnSelectListener != null) {
-
-							mOnSelectListener.getValue(showString);
+							mOnSelectListener.getValue(position);
 						}
 
 					}
@@ -135,13 +140,15 @@ public class ViewMiddle extends LinearLayout implements ViewBaseAction {
 	}
 
 	public void refreshData(ArrayList<Category> categoryOne,
-			SparseArray<LinkedList<Category>> categoryTwo) {
+			ArrayList<Category> categoryTwo) {
 		groups.clear();
 		groups.addAll(categoryOne);
-		children.clear();
-		children = categoryTwo;
-		plateListViewAdapter.notifyDataSetChanged();
+		childrenItem.clear();
+		childrenItem.addAll(categoryTwo);
+		Log.e("xxx_1", "" + childrenItem.size());
+		childrenItem.size();
 		earaListViewAdapter.notifyDataSetChanged();
+		plateListViewAdapter.notifyDataSetChanged();
 	}
 
 	public void setDefaultSelect() {
@@ -158,7 +165,15 @@ public class ViewMiddle extends LinearLayout implements ViewBaseAction {
 	}
 
 	public interface OnSelectListener {
-		public void getValue(String showText);
+		public void getValue(int position);
+	}
+
+	public void setOnSelectOneListener(OnSelectOneListener onSelectoneListener) {
+		mOnSelectOneListener = onSelectoneListener;
+	}
+
+	public interface OnSelectOneListener {
+		public void getValue(int position);
 	}
 
 	@Override

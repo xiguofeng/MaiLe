@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,9 +18,7 @@ import android.util.Log;
 import com.o2o.maile.BaseApplication;
 import com.o2o.maile.entity.Category;
 import com.o2o.maile.entity.Goods;
-import com.o2o.maile.network.config.MsgResult;
 import com.o2o.maile.network.config.RequestUrl;
-import com.o2o.maile.network.http.HttpUtils;
 import com.o2o.maile.network.volley.Request.Method;
 import com.o2o.maile.network.volley.Response.Listener;
 import com.o2o.maile.network.volley.toolbox.JsonObjectRequest;
@@ -104,72 +100,7 @@ public class GoodsLogic {
 		}
 	}
 
-	public static void getGoodsByCategroyId(final Context context,
-			final Handler handler, final String id) {
-		if (HttpUtils.checkNetWorkInfo(context)) {
-			new Thread(new Runnable() {
-
-				@Override
-				public void run() {
-					String url = RequestUrl.HOST_URL
-							+ RequestUrl.goods.queryGoodsByCategory;
-
-					ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
-					params.add(new BasicNameValuePair("articleid", id));
-					url = HttpUtils.getUrl(url, params);
-
-					BaseApplication.getInstanceRequestQueue().add(
-							new JsonObjectRequest(Method.GET, url, null,
-									new Listener<JSONObject>() {
-										@Override
-										public void onResponse(
-												JSONObject response) {
-											if (null != response) {
-												parseGoodsListData(response,
-														handler);
-											} else {
-												handler.sendEmptyMessage(GOODS_LIST_GET_SUC);
-											}
-
-										}
-									}, null));
-					BaseApplication.getInstanceRequestQueue().start();
-				}
-
-			}).start();
-		} else {
-			handler.sendEmptyMessage(NET_ERROR);
-		}
-	}
-
-	private static void parseGoodsListData(JSONObject response, Handler handler) {
-		try {
-			JSONArray goodsListArray = response
-					.getJSONArray(MsgResult.RESULT_DATA_TAG);
-			JSONObject goodsJsonObject = new JSONObject();
-			int size = goodsListArray.length();
-			Goods goods = new Goods();
-			for (int i = 0; i < size; i++) {
-				goodsJsonObject = goodsListArray.getJSONObject(i);
-
-				String sGoodsId = goodsJsonObject.getString("goodsId").trim();
-				String sGoodsName = goodsJsonObject.getString("goodsName")
-						.trim();
-
-				goods.setId(sGoodsId);
-				goods.setName(sGoodsName);
-			}
-
-			Message message = new Message();
-			message.what = GOODS_LIST_GET_SUC;
-			message.obj = goods;
-			handler.sendMessage(message);
-
-		} catch (JSONException e) {
-			handler.sendEmptyMessage(GOODS_LIST_GET_EXCEPTION);
-		}
-	}
-
+	
 	public static void getGoodsByKey(final Context context,
 			final Handler handler, final String keyword, final int limit) {
 

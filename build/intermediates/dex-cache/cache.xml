@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="D:\workspace\MaiLe\libs\netty-all-4.1.0.Beta3.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="605ce02f9af15e2e913eaeda137ce902a2c3d689">
+        <dex dex="D:\workspace\MaiLe\build\intermediates\pre-dexed\debug\netty-all-4.1.0.Beta3-f526ade3ada139a52ed303b4b2de0830cb3fb115.jar" />
+    </item>
+    <item
+        jar="D:\workspace\MaiLe\libs\android-support-v4.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="efec67655f6db90757faa37201efcee2a9ec3507">
+        <dex dex="D:\workspace\MaiLe\build\intermediates\pre-dexed\debug\android-support-v4-a2d153ac8f4f8142d32a3b3a98848fa8cf76598e.jar" />
+    </item>
+    <item
+        jar="D:\workspace\MaiLe\libs\jackson-mapper-lgpl-1.8.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1f389cbb6450628852a588ec0a3f8563f2e00684">
+        <dex dex="D:\workspace\MaiLe\build\intermediates\pre-dexed\debug\jackson-mapper-lgpl-1.8.1-1f209acf4fb58bd79e0e78cfa6c430f645cbe028.jar" />
+    </item>
+    <item
+        jar="D:\workspace\MaiLe\libs\jackson-core-lgpl-1.8.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="96d3b65e4696988835d1e5d1632eb74ebec0d527">
+        <dex dex="D:\workspace\MaiLe\build\intermediates\pre-dexed\debug\jackson-core-lgpl-1.8.1-dd731a4d2ceb93090605527a018013d508c60f8e.jar" />
+    </item>
+    <item
+        jar="D:\workspace\MaiLe\libs\locSDK_5.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a32e48b24fe3fe9fa8ae1cb8345b8db9a050df0f">
+        <dex dex="D:\workspace\MaiLe\build\intermediates\pre-dexed\debug\locSDK_5.1-747a1fd449cfca6bab7e26508f14d7bf152769b9.jar" />
+    </item>
+
+</items>
