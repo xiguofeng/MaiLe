@@ -193,8 +193,8 @@ public class SpecialGoodsActivity extends Activity {
 		Goods goods = new Goods();
 		goods.setName(mGoodsNameTv.getText().toString().trim());
 		goods.setCategoryIDLevel1(mNowSelectCategoryOne.getCategoryID());
-		goods.setCategoryIDLevel2(mNowSelectCategoryOne.getCategoryName());
-		goods.setCategoryNameLevel1(mNowSelectCategoryTwo.getCategoryID());
+		goods.setCategoryNameLevel1(mNowSelectCategoryOne.getCategoryName());
+		goods.setCategoryIDLevel2(mNowSelectCategoryTwo.getCategoryID());
 		goods.setCategoryNameLevel2(mNowSelectCategoryTwo.getCategoryName());
 		goods.setStandard("false");
 
