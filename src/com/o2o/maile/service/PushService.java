@@ -12,6 +12,8 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
@@ -95,16 +97,17 @@ public class PushService extends Service {
 		super.onCreate();
 		mContext = this;
 		initNotify();
-		ConnectLogic.connect(mContext, mHandler);
+		String version = getVersion();
+		if (!TextUtils.isEmpty(version)) {
+			ConnectLogic.connect(mContext, mHandler, Integer.parseInt(version));
+		}
 	}
 
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
-		flags = START_STICKY;  
-	    return super.onStartCommand(intent, flags, startId); 
+		flags = START_STICKY;
+		return super.onStartCommand(intent, flags, startId);
 	}
-	
-	  
 
 	@Override
 	public IBinder onBind(Intent intent) {
@@ -289,5 +292,21 @@ public class PushService extends Service {
 		mBuilder.setContentIntent(pendingIntent);
 		Log.e("xxx_mNotificationManager", "mNotificationManager");
 		mNotificationManager.notify(100, mBuilder.build());
+	}
+
+	/**
+	 * 获取版本号
+	 * 
+	 * @return 当前应用的版本号
+	 */
+	private String getVersion() {
+		try {
+			PackageManager manager = this.getPackageManager();
+			PackageInfo info = manager.getPackageInfo(this.getPackageName(), 0);
+			String version = info.versionName;
+			return version;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 }
