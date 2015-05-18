@@ -1,5 +1,7 @@
 package com.o2o.maile.network.logic;
 
+import java.util.HashMap;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -55,16 +57,32 @@ public class ConnectLogic {
 
 	}
 
+	/**
+	 * resultType 0: 连接成功, 需要根据pushaddress创建连接客户端 1: 软件版本低， 提示需要升级 2: 软件版本过低，
+	 * 需要softDownloadAddress升级版本
+	 */
 	// {"resultType":"0","pushAddress":"121.42.207.45:8007","softDownloadAddress":""}
 	// {"resultType":"0","pushAddress":"192.168.1.101:8007","softDownloadAddress":""}
 	private static void parseConnectData(JSONObject response, Handler handler) {
 		try {
+			String resultType = response.getString(MsgResult.RESULT_TYPE_TAG)
+					.trim();
+			String softDownloadAddress = response.getString(
+					MsgResult.RESULT_SOFTDOWNLOADADDRESS_TAG).trim();
 			String address = response.getString(
 					MsgResult.RESULT_PUSH_ADDRESS_TAG).trim();
+			Log.e("xxx_softDownloadAddress", softDownloadAddress);
+
+			HashMap<String, String> result = new HashMap<String, String>();
+			result.put(MsgResult.RESULT_TYPE_TAG, resultType);
+			result.put(MsgResult.RESULT_SOFTDOWNLOADADDRESS_TAG,
+					softDownloadAddress);
+			result.put(MsgResult.RESULT_PUSH_ADDRESS_TAG, address);
+
 			Message msg = new Message();
 			if (!TextUtils.isEmpty(address)) {
 				msg.what = CONNECT_SUC;
-				msg.obj = address;
+				msg.obj = result;
 			} else {
 				msg.what = CONNECT_FAIL;
 				// msg.obj = response.getString(MsgResult.RESULT_ERROR_MSG_TAG)

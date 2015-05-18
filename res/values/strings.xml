@@ -2,6 +2,7 @@
 
     <string name="app_name">O2O</string>
     <string name="exit">再按一次退出程序</string>
+    <string name="force_upgrade">此版本已不可用，下载新的版本</string>
 
     <!-- Login -->
     <string name="login_emptyname_or_emptypwd">用户名或密码为空，请重新输入</string>

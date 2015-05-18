@@ -29,6 +29,17 @@ public class MsgResult {
 	 * address
 	 */
 	public static final String RESULT_PUSH_ADDRESS_TAG = "pushAddress";
+	
+	/**
+	 * resultType
+	 */
+	public static final String RESULT_TYPE_TAG = "resultType";
+	
+	/**
+	 * softDownloadAddress
+	 */
+	public static final String RESULT_SOFTDOWNLOADADDRESS_TAG = "softDownloadAddress";
+
 
 	/**
 	 * errorMessage

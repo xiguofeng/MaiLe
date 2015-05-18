@@ -14,6 +14,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
@@ -26,6 +27,7 @@ import android.widget.Toast;
 
 import com.o2o.maile.R;
 import com.o2o.maile.entity.NotifyInfo;
+import com.o2o.maile.network.config.MsgResult;
 import com.o2o.maile.network.logic.ConnectLogic;
 import com.o2o.maile.network.netty.ConnectException;
 import com.o2o.maile.network.netty.NettyMessageType;
@@ -60,16 +62,43 @@ public class PushService extends Service {
 	private static int sNotifyId = 0;
 
 	public static PushOrder2BuyerRequest mPushOrder2Buyer;
+	public static String sDownUrl;
 
-	Handler mHandler = new Handler() {
+	/**
+	 * 0 不需要升級 1 新更新 2 强制升级
+	 */
+	public static int isUngradeFlag = -1;
+	public Handler mHandler = new Handler() {
 
 		@Override
 		public void handleMessage(Message msg) {
 			int what = msg.what;
 			switch (what) {
 			case ConnectLogic.CONNECT_SUC: {
-				AppInfoManager.setPushUrl(mContext, (String) msg.obj);
-				pushConnection();
+				HashMap<String, String> message = (HashMap<String, String>) msg.obj;
+				if ("0".equals(message.get(MsgResult.RESULT_TYPE_TAG))) {
+					isUngradeFlag = 0;
+					AppInfoManager.setPushUrl(mContext,
+							message.get(MsgResult.RESULT_PUSH_ADDRESS_TAG));
+					pushConnection();
+				} else if ("1".equals(message.get(MsgResult.RESULT_TYPE_TAG))) {
+					isUngradeFlag = 1;
+					sDownUrl = message
+							.get(MsgResult.RESULT_SOFTDOWNLOADADDRESS_TAG);
+					AppInfoManager.setPushUrl(mContext,
+							message.get(MsgResult.RESULT_PUSH_ADDRESS_TAG));
+					pushConnection();
+				} else {
+					isUngradeFlag = 2;
+					sDownUrl = message
+							.get(MsgResult.RESULT_SOFTDOWNLOADADDRESS_TAG);
+					Toast.makeText(mContext, R.string.force_upgrade,
+							Toast.LENGTH_SHORT).show();
+					Intent intent = new Intent();
+					intent.setAction(Intent.ACTION_VIEW);
+					intent.setData(Uri.parse(sDownUrl));
+					startActivity(intent);
+				}
 				break;
 			}
 			case ConnectLogic.CONNECT_FAIL: {
@@ -309,4 +338,5 @@ public class PushService extends Service {
 			return null;
 		}
 	}
+
 }
