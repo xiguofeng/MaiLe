@@ -3,6 +3,7 @@
     <string name="app_name">O2O</string>
     <string name="exit">再按一次退出程序</string>
     <string name="force_upgrade">此版本已不可用，下载新的版本</string>
+    
 
     <!-- Login -->
     <string name="login_emptyname_or_emptypwd">用户名或密码为空，请重新输入</string>
@@ -12,6 +13,7 @@
     <string name="login_successful">登录成功</string>
     <string name="login_fail">登录失败</string>
     <string name="shortcut_buy">快速购买</string>
+    <string name="get_data_fail">数据获取失败，请稍后再试</string>
 
     <!-- 用户注册时，如果表单填写不完整的提示语 -->
     <string name="reg_error_empty_form_message">信息没有填写完整哦!</string>

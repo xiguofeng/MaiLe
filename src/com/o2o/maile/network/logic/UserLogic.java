@@ -17,6 +17,7 @@ import android.os.Message;
 import android.util.Log;
 
 import com.o2o.maile.BaseApplication;
+import com.o2o.maile.R;
 import com.o2o.maile.entity.User;
 import com.o2o.maile.network.config.MsgResult;
 import com.o2o.maile.network.config.RequestUrl;
@@ -69,7 +70,10 @@ public class UserLogic {
 							if (null != response) {
 								parseRegisterData(response, handler);
 							} else {
-								handler.sendEmptyMessage(REGIS_FAIL);
+								Message msg = new Message();
+								msg.what = REGIS_FAIL;
+								msg.obj = context.getResources().getString(R.string.get_data_fail);
+								handler.sendMessage(msg);
 							}
 						}
 					}, null));

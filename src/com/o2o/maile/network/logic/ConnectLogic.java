@@ -71,7 +71,6 @@ public class ConnectLogic {
 					MsgResult.RESULT_SOFTDOWNLOADADDRESS_TAG).trim();
 			String address = response.getString(
 					MsgResult.RESULT_PUSH_ADDRESS_TAG).trim();
-			Log.e("xxx_softDownloadAddress", softDownloadAddress);
 
 			HashMap<String, String> result = new HashMap<String, String>();
 			result.put(MsgResult.RESULT_TYPE_TAG, resultType);

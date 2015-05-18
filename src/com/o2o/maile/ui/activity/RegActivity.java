@@ -75,8 +75,8 @@ public class RegActivity extends BaseActivity implements OnClickListener {
 				break;
 			}
 			case UserLogic.REGIS_FAIL: {
-				Toast.makeText(mContext, R.string.reg_fail, Toast.LENGTH_SHORT)
-						.show();
+				String message = (String) msg.obj;
+				Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
 				break;
 			}
 			case UserLogic.REGIS_EXCEPTION: {
