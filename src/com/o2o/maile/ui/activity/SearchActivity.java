@@ -2,7 +2,9 @@ package com.o2o.maile.ui.activity;
 
 import java.util.ArrayList;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -71,13 +73,13 @@ public class SearchActivity extends BaseActivity implements OnClickListener {
 					mSellersLv.setVisibility(View.VISIBLE);
 					mSearchTagTv.setText(getString(R.string.find_goods));
 				} else {
-
-					Intent intent = new Intent(SearchActivity.this,
-							SpecialGoodsActivity.class);
-					intent.putExtra("goodsName", mSearchKey);
-					startActivity(intent);
-					overridePendingTransition(R.anim.push_left_in,
-							R.anim.push_left_out);
+					alertInfo();
+					// Intent intent = new Intent(SearchActivity.this,
+					// SpecialGoodsActivity.class);
+					// intent.putExtra("goodsName", mSearchKey);
+					// startActivity(intent);
+					// overridePendingTransition(R.anim.push_left_in,
+					// R.anim.push_left_out);
 					// Toast.makeText(mContext, "没有查询到相关商品", Toast.LENGTH_SHORT)
 					// .show();
 				}
@@ -199,6 +201,40 @@ public class SearchActivity extends BaseActivity implements OnClickListener {
 		// mGoodsList.add(goods);
 		// }
 		// mGoodsAdapter.notifyDataSetChanged();
+	}
+	
+	protected void alertInfo() {
+		showAlertDialog("查找信息", " 没有找到相关商品,继续查找！", "继续",
+				new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						dialog.dismiss();
+						Intent intent = new Intent(SearchActivity.this,
+								SpecialGoodsActivity.class);
+						intent.putExtra("goodsName", mSearchKey);
+						startActivity(intent);
+						overridePendingTransition(R.anim.push_left_in,
+								R.anim.push_left_out);
+					}
+				}, "取消", new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						dialog.dismiss();
+					}
+				});
+	}
+
+	protected void showAlertDialog(String title, String message,
+			String positiveText,
+			DialogInterface.OnClickListener onPositiveClickListener,
+			String negativeText,
+			DialogInterface.OnClickListener onNegativeClickListener) {
+		new AlertDialog.Builder(this).setTitle(title).setMessage(message)
+				.setPositiveButton(positiveText, onPositiveClickListener)
+				.setNegativeButton(negativeText, onNegativeClickListener)
+				.show();
 	}
 
 	@Override
