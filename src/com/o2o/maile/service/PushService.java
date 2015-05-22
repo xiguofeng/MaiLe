@@ -146,6 +146,8 @@ public class PushService extends Service {
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
+		Intent sevice = new Intent(this, PushService.class);  
+	    this.startService(sevice);  
 	}
 
 	private void pushConnection() {
