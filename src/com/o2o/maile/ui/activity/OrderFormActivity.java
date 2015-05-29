@@ -219,8 +219,8 @@ public class OrderFormActivity extends BaseActivity implements OnClickListener {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 						dialog.dismiss();
-						AppManager.getInstance().killActivity(
-								SearchActivity.class);
+//						AppManager.getInstance().killActivity(
+//								SearchActivity.class);
 						// Intent intent = new Intent(OrderFormActivity.this,
 						// SearchActivity.class);
 						// startActivity(intent);

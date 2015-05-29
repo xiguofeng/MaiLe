@@ -45,8 +45,9 @@ public class NettyMessageEncoder   extends MessageToMessageEncoder<NettyMessage>
 			body = new byte[0];
 		}
 		
-		int byteLen = body.length + 4;
-		ByteBuf outBuf = Unpooled.buffer(byteLen);
+		int msgLen = body.length + 4;
+		ByteBuf outBuf = Unpooled.buffer(msgLen + 4);
+		outBuf.writeInt(msgLen);
 		outBuf.writeInt(msg.getMessageType().intValue());
 		outBuf.writeBytes(body);
 		out.add(outBuf);
