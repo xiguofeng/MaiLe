@@ -14,8 +14,6 @@ import java.util.List;
 import com.o2o.maile.network.netty.handler.NettyMessage;
 import com.o2o.maile.network.netty.handler.NettyMessageImpl;
 
-
-
 @Sharable
 public class NettyMessageDecoder  extends MessageToMessageDecoder<ByteBuf> {
 
@@ -52,6 +50,7 @@ public class NettyMessageDecoder  extends MessageToMessageDecoder<ByteBuf> {
 		this.charset = charset;
 	}
 
+
 	@Override
 	protected void decode(ChannelHandlerContext ctx, ByteBuf msg,
 			List<Object> out) throws Exception {
@@ -69,15 +68,30 @@ public class NettyMessageDecoder  extends MessageToMessageDecoder<ByteBuf> {
 		
 		if(cache.isComplate())
 		{
-			
+			attr.remove();
 			Integer messageType = cache.buf.readInt();
 			String messageBody = cache.buf.toString(charset);
-			
 			NettyMessage nettyMessage = new NettyMessageImpl(messageType, messageBody);
 			out.add(nettyMessage);
 		}
 		
 	}
 
+	@Override
+    public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
+		cleatResource(ctx);
+		ctx.fireChannelReadComplete();
+    }
+	@Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause)
+            throws Exception {
+		cleatResource(ctx);
+        ctx.fireExceptionCaught(cause);
+    }
+	
+	private void cleatResource(ChannelHandlerContext ctx)
+	{
+		Attribute<Cache> attr = ctx.attr(key);
+		attr.remove();
+	}
 }
-
